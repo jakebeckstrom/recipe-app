@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import NavBar from "./NavBar";
+import RecipeList from "./RecipeList"
+import AddNewRecipe from './NewRecipe';
+
+const viewOptions = Object.freeze({
+  LIST: "LIST",
+  RECIPE: "RECIPE",
+  ADDNEW: "ADDNEW",
+  PLANNER: "PLANNER"
+})
 
 function App() {
+  const [view, setView] = useState(viewOptions.LIST)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar viewOptions={viewOptions} setView={setView}/>
+      {view === viewOptions.LIST && <RecipeList />}
+      {view === viewOptions.ADDNEW && <AddNewRecipe/>}
+      {/* {view === viewOptions.RECIPE} */}
+      {/* {view === viewOptions.PLANNER} */}
     </div>
   );
 }
