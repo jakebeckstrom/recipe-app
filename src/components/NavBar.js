@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NavBar = ({viewOptions, setView}) => {
   return (
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand">
           The Beckstrom's meal planning
         </a>
         <button
@@ -21,17 +22,24 @@ const NavBar = ({viewOptions, setView}) => {
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <button class="nav-link active" onClick={() => setView(viewOptions.LIST)}>
-                Home
+              <button class="nav-link active">
+                <Link to="/">Home</Link>
               </button>
             </li>
             <li class="nav-item">
-              <button class="nav-link disabled" onClick={() => setView(viewOptions.PLANNER)}>
-                Planner
+              <button class="nav-link">
+                <Link to="/planner">Planner</Link>
               </button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-outline-success" onClick={() => setView(viewOptions.ADDNEW)} >Add+</button>
+              <button class="nav-link active">
+                <Link to="/add">Add</Link>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link active">
+                <Link to="/settings">Settings</Link>
+              </button>
             </li>
           </ul>
         </div>
